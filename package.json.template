@@ -1,0 +1,27 @@
+{
+  "name": "@REPLACE_SCOPE/dsh",
+  "version": "0.2.0-rc.2",
+  "description": "DeepSeek Harness with the file-tool repair engine, distributed as a single install.",
+  "type": "module",
+  "bin": {
+    "dsh": "./bin.js"
+  },
+  "files": [
+    "bin.js"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": "^22.19 || >=24"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-tool-fs": "npm:@REPLACE_SCOPE/dsh-tool-fs@0.2.0-rc.2",
+    "@deepseek-ai/dsh-fs-edit-repair": "npm:@REPLACE_SCOPE/dsh-fs-edit-repair@0.2.0-rc.2",
+    "@deepseek-ai/dsh-arg-repair": "npm:@REPLACE_SCOPE/dsh-arg-repair@0.2.0-rc.2"
+  },
+  "overrides": {
+    "@deepseek-ai/dsh-tool-fs": "npm:@REPLACE_SCOPE/dsh-tool-fs@0.2.0-rc.2",
+    "@deepseek-ai/dsh-fs-edit-repair": "npm:@REPLACE_SCOPE/dsh-fs-edit-repair@0.2.0-rc.2",
+    "@deepseek-ai/dsh-arg-repair": "npm:@REPLACE_SCOPE/dsh-arg-repair@0.2.0-rc.2"
+  }
+}
