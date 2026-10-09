@@ -49,7 +49,7 @@ Windows PowerShell：
 - 如果本机 npm 缓存较热，直接装可能解析到旧的占位版本，写死版本号最稳：
 
   ```sh
-  npm i -g @swoop111/dsh@0.2.0-rc.2
+  npm i -g @swoop111/dsh@0.2.0-rc.2.2
   ```
 
 ## 卸载
@@ -63,21 +63,23 @@ npm uninstall -g @swoop111/dsh
 只发 4 个包，不改动官方任何东西：
 
 - `@swoop111/dsh` — 安装入口，里面只有一份 `package.json` 和一个 `bin.js`。
-- `@swoop111/dsh-tool-fs`、`@swoop111/dsh-fs-edit-repair`、`@swoop111/dsh-arg-repair` — 官方同名包加上修复引擎后的副本。
+- `@swoop111/dsh-tool-fs-clean`、`@swoop111/dsh-fs-edit-repair-clean`、`@swoop111/dsh-arg-repair-clean` — 官方同名包加上修复引擎后的副本，发布前已去掉全部注释。
 
-根包的 `dependencies` 和 `overrides` 用 `npm:@swoop111/...@0.2.0-rc.2` 把官方那三个名字指向上面这三个包。因为 npm 只认安装根目录的 `overrides`，而这里装的就是根包，所以重定向在所有平台上都生效——不需要发布权，也不需要改官方那套 300 多个包。
+根包的 `dependencies` 和 `overrides` 用 `npm:` 别名把官方那三个名字指向上面这三个包：
 
 ```json
 {
   "dependencies": {
     "@deepseek-ai/dsh": "0.2.0-rc.2",
-    "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs@0.2.0-rc.2"
+    "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs-clean@0.2.0-rc.2"
   },
   "overrides": {
-    "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs@0.2.0-rc.2"
+    "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs-clean@0.2.0-rc.2"
   }
 }
 ```
+
+**fork 的版本号必须写成上游版本（这里是 `0.2.0-rc.2`），不能自己往上加。** 因为 `@deepseek-ai/dsh-arg-repair` 和 `@deepseek-ai/dsh-fs-edit-repair` 这两个名字在 npm 上并不存在，整棵树是靠「别名装到官方名下、版本号一致」被去重满足的；fork 一旦升版，树里那些精确版本依赖就无从满足，npm 只能去 registry 找官方名并 404。
 
 ## 说明
 

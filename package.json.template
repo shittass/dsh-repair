@@ -1,6 +1,6 @@
 {
-  "name": "@REPLACE_SCOPE/dsh",
-  "version": "0.2.0-rc.2",
+  "name": "@{{SCOPE}}/dsh",
+  "version": "{{VERSION}}",
   "description": "DeepSeek Harness with the file-tool repair engine, distributed as a single install.",
   "type": "module",
   "bin": {
@@ -14,14 +14,14 @@
     "node": "^22.19 || >=24"
   },
   "dependencies": {
-    "@deepseek-ai/dsh": "0.2.0-rc.2",
-    "@deepseek-ai/dsh-tool-fs": "npm:@REPLACE_SCOPE/dsh-tool-fs@0.2.0-rc.2",
-    "@deepseek-ai/dsh-fs-edit-repair": "npm:@REPLACE_SCOPE/dsh-fs-edit-repair@0.2.0-rc.2",
-    "@deepseek-ai/dsh-arg-repair": "npm:@REPLACE_SCOPE/dsh-arg-repair@0.2.0-rc.2"
+    "@deepseek-ai/dsh": "{{BASE_VERSION}}",
+    "@deepseek-ai/dsh-tool-fs": "npm:@{{SCOPE}}/dsh-tool-fs-clean@{{BASE_VERSION}}",
+    "@deepseek-ai/dsh-fs-edit-repair": "npm:@{{SCOPE}}/dsh-fs-edit-repair-clean@{{BASE_VERSION}}",
+    "@deepseek-ai/dsh-arg-repair": "npm:@{{SCOPE}}/dsh-arg-repair-clean@{{BASE_VERSION}}"
   },
   "overrides": {
-    "@deepseek-ai/dsh-tool-fs": "npm:@REPLACE_SCOPE/dsh-tool-fs@0.2.0-rc.2",
-    "@deepseek-ai/dsh-fs-edit-repair": "npm:@REPLACE_SCOPE/dsh-fs-edit-repair@0.2.0-rc.2",
-    "@deepseek-ai/dsh-arg-repair": "npm:@REPLACE_SCOPE/dsh-arg-repair@0.2.0-rc.2"
+    "@deepseek-ai/dsh-tool-fs": "npm:@{{SCOPE}}/dsh-tool-fs-clean@{{BASE_VERSION}}",
+    "@deepseek-ai/dsh-fs-edit-repair": "npm:@{{SCOPE}}/dsh-fs-edit-repair-clean@{{BASE_VERSION}}",
+    "@deepseek-ai/dsh-arg-repair": "npm:@{{SCOPE}}/dsh-arg-repair-clean@{{BASE_VERSION}}"
   }
 }
