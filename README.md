@@ -25,9 +25,20 @@ npm i -g @swoop111/dsh
 ```sh
 dsh --version
 # 0.2.0-rc.2
+```
 
+再确认修复引擎真的被换进来了（macOS / Linux / Git Bash）：
+
+```sh
 dsh --profile headless --dump-config-schema | grep -c '"readRepair"'
 # 1 —— 如果是 0，说明装到的是官方原版，修复引擎没有被替换进来
+```
+
+Windows PowerShell：
+
+```powershell
+(dsh --profile headless --dump-config-schema | Select-String '"readRepair"').Count
+# 1
 ```
 
 ## 限制
