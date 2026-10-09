@@ -17,11 +17,13 @@
     "@deepseek-ai/dsh": "{{BASE_VERSION}}",
     "@deepseek-ai/dsh-tool-fs": "npm:@{{SCOPE}}/dsh-tool-fs-clean@{{BASE_VERSION}}",
     "@deepseek-ai/dsh-fs-edit-repair": "npm:@{{SCOPE}}/dsh-fs-edit-repair-clean@{{BASE_VERSION}}",
-    "@deepseek-ai/dsh-arg-repair": "npm:@{{SCOPE}}/dsh-arg-repair-clean@{{BASE_VERSION}}"
+    "@deepseek-ai/dsh-arg-repair": "npm:@{{SCOPE}}/dsh-arg-repair-clean@{{BASE_VERSION}}",
+    "@deepseek-ai/dsh-tools": "npm:@{{SCOPE}}/dsh-tools-clean@{{BASE_VERSION}}"
   },
   "overrides": {
     "@deepseek-ai/dsh-tool-fs": "npm:@{{SCOPE}}/dsh-tool-fs-clean@{{BASE_VERSION}}",
     "@deepseek-ai/dsh-fs-edit-repair": "npm:@{{SCOPE}}/dsh-fs-edit-repair-clean@{{BASE_VERSION}}",
-    "@deepseek-ai/dsh-arg-repair": "npm:@{{SCOPE}}/dsh-arg-repair-clean@{{BASE_VERSION}}"
+    "@deepseek-ai/dsh-arg-repair": "npm:@{{SCOPE}}/dsh-arg-repair-clean@{{BASE_VERSION}}",
+    "@deepseek-ai/dsh-tools": "npm:@{{SCOPE}}/dsh-tools-clean@{{BASE_VERSION}}"
   }
 }

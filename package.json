@@ -1,6 +1,6 @@
 {
   "name": "@swoop111/dsh",
-  "version": "0.2.0-rc.2.2",
+  "version": "0.2.0-rc.2.3",
   "description": "DeepSeek Harness with the file-tool repair engine, distributed as a single install.",
   "type": "module",
   "bin": {
@@ -17,11 +17,13 @@
     "@deepseek-ai/dsh": "0.2.0-rc.2",
     "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs-clean@0.2.0-rc.2",
     "@deepseek-ai/dsh-fs-edit-repair": "npm:@swoop111/dsh-fs-edit-repair-clean@0.2.0-rc.2",
-    "@deepseek-ai/dsh-arg-repair": "npm:@swoop111/dsh-arg-repair-clean@0.2.0-rc.2"
+    "@deepseek-ai/dsh-arg-repair": "npm:@swoop111/dsh-arg-repair-clean@0.2.0-rc.2",
+    "@deepseek-ai/dsh-tools": "npm:@swoop111/dsh-tools-clean@0.2.0-rc.2"
   },
   "overrides": {
     "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs-clean@0.2.0-rc.2",
     "@deepseek-ai/dsh-fs-edit-repair": "npm:@swoop111/dsh-fs-edit-repair-clean@0.2.0-rc.2",
-    "@deepseek-ai/dsh-arg-repair": "npm:@swoop111/dsh-arg-repair-clean@0.2.0-rc.2"
+    "@deepseek-ai/dsh-arg-repair": "npm:@swoop111/dsh-arg-repair-clean@0.2.0-rc.2",
+    "@deepseek-ai/dsh-tools": "npm:@swoop111/dsh-tools-clean@0.2.0-rc.2"
   }
 }

@@ -49,7 +49,7 @@ Windows PowerShell：
 - 如果本机 npm 缓存较热，直接装可能解析到旧的占位版本，写死版本号最稳：
 
   ```sh
-  npm i -g @swoop111/dsh@0.2.0-rc.2.2
+  npm i -g @swoop111/dsh@0.2.0-rc.2.3
   ```
 
 ## 卸载
@@ -60,26 +60,33 @@ npm uninstall -g @swoop111/dsh
 
 ## 它是怎么做的
 
-只发 4 个包，不改动官方任何东西：
+只发 5 个包，不改动官方任何东西：
 
 - `@swoop111/dsh` — 安装入口，里面只有一份 `package.json` 和一个 `bin.js`。
-- `@swoop111/dsh-tool-fs-clean`、`@swoop111/dsh-fs-edit-repair-clean`、`@swoop111/dsh-arg-repair-clean` — 官方同名包加上修复引擎后的副本，发布前已去掉全部注释。
+- `@swoop111/dsh-tool-fs-clean`、`@swoop111/dsh-fs-edit-repair-clean`、`@swoop111/dsh-arg-repair-clean` — 官方同名包加上修复引擎后的副本。
+- `@swoop111/dsh-tools-clean` — 官方 `dsh-tools` 的副本，另外移除了它打进主 bundle 并公开导出的测试夹具（`defineContentToolFixture`）与 `lib/types/testing.*`。
 
-根包的 `dependencies` 和 `overrides` 用 `npm:` 别名把官方那三个名字指向上面这三个包：
+四个副本在发布前都去掉了全部注释（`.js` 与 `.d.ts`），并断言包内不存在测试专用路径或测试运行器的导入。
+
+根包的 `dependencies` 和 `overrides` 用 `npm:` 别名把官方那四个名字指向上面这四个包：
 
 ```json
 {
   "dependencies": {
     "@deepseek-ai/dsh": "0.2.0-rc.2",
-    "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs-clean@0.2.0-rc.2"
+    "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs-clean@0.2.0-rc.2",
+    "@deepseek-ai/dsh-tools": "npm:@swoop111/dsh-tools-clean@0.2.0-rc.2"
   },
   "overrides": {
-    "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs-clean@0.2.0-rc.2"
+    "@deepseek-ai/dsh-tool-fs": "npm:@swoop111/dsh-tool-fs-clean@0.2.0-rc.2",
+    "@deepseek-ai/dsh-tools": "npm:@swoop111/dsh-tools-clean@0.2.0-rc.2"
   }
 }
 ```
 
-**fork 的版本号必须写成上游版本（这里是 `0.2.0-rc.2`），不能自己往上加。** 因为 `@deepseek-ai/dsh-arg-repair` 和 `@deepseek-ai/dsh-fs-edit-repair` 这两个名字在 npm 上并不存在，整棵树是靠「别名装到官方名下、版本号一致」被去重满足的；fork 一旦升版，树里那些精确版本依赖就无从满足，npm 只能去 registry 找官方名并 404。
+（`dsh-fs-edit-repair` 与 `dsh-arg-repair` 同理，这里省略。）
+
+**fork 的版本号必须写成上游版本（这里是 `0.2.0-rc.2`），不能自己往上加。** 因为 `@deepseek-ai/dsh-arg-repair` 和 `@deepseek-ai/dsh-fs-edit-repair` 这两个名字在 npm 上并不存在，整棵树是靠「别名装到官方名下、版本号一致」被去重满足的；fork 一旦升版，树里那些精确版本依赖就无从满足，npm 只能去 registry 找官方名并 404。只有入口包 `@swoop111/dsh` 可以带自己的分发修订号。
 
 ## 说明
 
